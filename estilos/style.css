@@ -1,0 +1,157 @@
+body {
+    background-color: #F2F2F5; /* Cor Light 3 do guia */
+    font-family: 'Arial', sans-serif; /* Usando Arial como fallback da Uber Move */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.principal {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    width: 380px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.campo {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    color: #3A3A3C; /* Dark 1 */
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #C7C9D9; /* Dark 4 */
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.btn-logar {
+    background-color: #FA2408; /* Main Color */
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn-logar:hover {
+    background-color: #CB2B16; /* Darker */
+}
+
+body { 
+            font-family: Arial, sans-serif; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            margin: 0; 
+            background-color: #f4f4f4; 
+        }
+        
+        .conteudo-central { 
+            width: 700px; 
+            text-align: center; 
+        }
+
+        .setor-texto { 
+            color: red; 
+            font-weight: bold; 
+            margin-bottom: 20px; 
+            font-size: 18px;
+            text-align: center;
+        }
+        
+        .logo-box { 
+            border: 2px solid #000; 
+            padding: 10px; 
+            margin: 0 auto 30px auto; 
+            width: 500px; 
+            background-color: white;
+            border-radius: 10px;
+        }
+        .logo-box img { 
+            width: 100%; 
+            display: block; 
+        }
+
+        /* Configuração do Grid */
+        .grid-botoes { 
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 20px;
+            justify-items: center;
+            width: 550px;
+            margin: 0 auto;
+        }
+
+        .menu-btn { 
+            border: none; 
+            background: none; 
+            cursor: pointer; 
+            width: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+       /* O quadrado do ícone */
+.menu-btn img {
+    width: 60px; 
+    height: 60px; 
+    padding: 5px; 
+    background-color: white;
+    transition: 0.3s;
+    border-radius: 15px;
+    box-shadow: 2px 2px #c7c9d9;
+
+    /* AQUI ESTÁ O SEGREDO: */
+    border: 3px solid transparent; /* A borda existe, mas é invisível */
+}
+
+/* Estilo da imagem QUANDO O MOUSE ENCOSTA (Hover) */
+.menu-btn:hover img {
+    /* A borda "acende" com a cor vermelha da paleta */
+    border-color: #FA2408;
+    transform: scale(1.1);
+}
+
+/* Estilo do texto (o nome em baixo do ícone) */
+.menu-btn span { 
+    display: block; 
+    font-size: 11px; 
+    font-weight: bold; 
+    margin-top: 8px; 
+    transition: 0.3s; /* Também muda suavemente */
+}
+
+/* Estilo do texto QUANDO O MOUSE ENCOSTA */
+.menu-btn:hover span { 
+    color: #FA2408; /* O texto também fica vermelho para combinar */
+}
+
+.btn-sair {
+background-color: #FA2408; /* Main Color */
+width: 70px;
+height: 25px;
+border-radius: 10px;
+color: white;
+font-weight: bold;
+border: none;
+cursor: pointer;
+margin-top: 80px;
+}
+
+.btn-sair:hover {
+    background-color: #CB2B16;
+}

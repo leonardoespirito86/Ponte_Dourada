@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" href="estilos/style.css">
+    <script src="scripts/script.js"></script>
+    <title>Fornecedores - GEC</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="principal">
+        <h1 style="color: #FA2408;">Cadastro de Fornecedores</h1>
+        <form id="formFornecedor">
+            <div class="campo">
+                <label>Razão Social:</label>
+                <input type="text" id="razao" required>
+            </div>
+            <div class="campo">
+                <label>CNPJ:</label>
+                <input type="text" id="cnpj" placeholder="00.000.000/0000-00">
+            </div>
+            <input type="button" value="SALVAR" onclick="alert('Fornecedor cadastrado!')" class="btn-logar">
+            <input type="button" value="VOLTAR" onclick="window.location.href='PaginaPrincipal.html'" style="background-color: #687588; margin-top: 10px;" class="btn-logar">
+        </form>
+    </div>
+</body>
+</html>

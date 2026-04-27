@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" href="estilos/style.css">
+    <script src="scripts/script.js"></script>
+    <title>Cadastro de Serviços - GEC</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="principal">
+        <h1 style="color: #FA2408;">Cadastro de Serviços</h1>
+        
+        <form id="formServico">
+            <div class="campo">
+                <label>Nome do Serviço:</label>
+                <input type="text" id="nomeServico" placeholder="Ex: Fisioterapia, Curativo..." required>
+            </div>
+
+            <div class="campo">
+                <label>Valor Estimado (R$):</label>
+                <input type="number" id="valorServico" placeholder="0,00" step="0.01">
+            </div>
+
+            <div class="campo">
+                <label>Descrição do Serviço:</label>
+                <textarea id="descricao" style="width: 100%; border-radius: 8px; border: 1px solid #C7C9D9; padding: 10px;" rows="4"></textarea>
+            </div>
+
+            <input type="button" value="CADASTRAR SERVIÇO" onclick="salvarServico()" class="btn-logar">
+            <input type="button" value="VOLTAR AO MENU" onclick="voltar()" style="background-color: #687588; margin-top: 10px;" class="btn-logar">
+        </form>
+    </div>
+
+    <script>
+        function salvarServico() {
+            alert("Serviço cadastrado com sucesso!");
+            document.getElementById('formServico').reset();
+        }
+
+        function voltar() {
+            window.location.href = "PaginaPrincipal.html";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" href="estilos/style.css">
+    <script src="scripts/script.js"></script>
+    <title>Agendamentos - GEC</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="principal">
+        <h1 style="color: #FA2408;">Novo Agendamento</h1>
+        
+        <form id="formAgendamento">
+            <div class="campo">
+                <label>Cliente:</label>
+                <input type="text" id="clienteNome" placeholder="Nome do cliente" required>
+            </div>
+
+            <div class="campo">
+                <label>Data do Atendimento:</label>
+                <input type="date" id="dataAgendamento" required>
+            </div>
+
+            <div class="campo">
+                <label>Responsável pelo Atendimento:</label>
+                <input type="text" id="responsavel" placeholder="Nome do funcionário">
+            </div>
+
+            <div class="campo">
+                <label>Observações/Motivo:</label>
+                <textarea id="motivo" style="width: 100%; border-radius: 8px; border: 1px solid #C7C9D9; padding: 10px;" rows="4"></textarea>
+            </div>
+
+            <input type="button" value="CONFIRMAR AGENDAMENTO" onclick="confirmar()" class="btn-logar">
+            <input type="button" value="VOLTAR AO MENU" onclick="voltar()" style="background-color: #687588; margin-top: 10px;" class="btn-logar">
+        </form>
+    </div>
+
+    <script>
+        function confirmar() {
+            alert("Agendamento registrado com sucesso!");
+            document.getElementById('formAgendamento').reset();
+        }
+
+        function voltar() {
+            // Lembre-se: o nome aqui deve ser IGUAL ao seu arquivo da tela principal
+            window.location.href = "PaginaPrincipal.html";
+        }
+    </script>
+</body>
+</html>
