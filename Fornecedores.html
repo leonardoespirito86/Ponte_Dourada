@@ -3,26 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    
+    <!-- LINKS DE CONEXÃO: Importante conferir os nomes das pastas ('estilos' e 'scripts') -->
     <link rel="stylesheet" href="estilos/style.css">
     <script src="scripts/script.js"></script>
+    
     <title>Fornecedores - GEC</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="principal">
         <h1 style="color: #FA2408;">Cadastro de Fornecedores</h1>
+        <p>Insira os dados da empresa parceira.</p>
+
+        <!-- FORMULÁRIO: O ID 'formFornecedor' permite limpar todos os campos de uma vez depois -->
         <form id="formFornecedor">
+            
+            <!-- RAZÃO SOCIAL: Campo de texto obrigatório (required) -->
             <div class="campo">
                 <label>Razão Social:</label>
-                <input type="text" id="razao" required>
+                <input type="text" id="razao" placeholder="Nome da Empresa" required>
             </div>
+
+            <!-- CNPJ:
+                 Usa 'oninput="mascaraCNPJ(this)"'. 
+                 O 'this' passa o próprio input como argumento para a função no script.js -->
             <div class="campo">
                 <label>CNPJ:</label>
-                <input type="text" id="cnpj" placeholder="00.000.000/0000-00">
+                <input type="text" id="cnpj" placeholder="00.000.000/0000-00" oninput="mascaraCNPJ(this)">
             </div>
-            <input type="button" value="SALVAR" onclick="alert('Fornecedor cadastrado!')" class="btn-logar">
-            <input type="button" value="VOLTAR" onclick="window.location.href='PaginaPrincipal.html'" style="background-color: #687588; margin-top: 10px;" class="btn-logar">
+
+            <!-- TELEFONE COMERCIAL:
+                 Usa a mesma lógica de máscara para formatar o número enquanto o usuário digita -->
+            <div class="campo">
+                <label>Telefone Comercial:</label>
+                <input type="text" id="tel" placeholder="(00) 0000-0000" oninput="mascaraTelefone(this)">
+            </div>
+
+            <br>
+            <!-- BOTÕES DE AÇÃO:
+                 onclick="salvarFornecedor()" -> Executa a lógica de validação abaixo.
+                 onclick="voltar()" -> Executa o redirecionamento. -->
+            <input type="button" value="SALVAR" onclick="salvarFornecedor()" class="btn-logar">
+            <input type="button" value="VOLTAR" onclick="voltar()" style="background-color: #687588; margin-top: 10px;" class="btn-logar">
         </form>
     </div>
+
+    <!-- SCRIPT LOCAL: Funções que só interessam a esta página -->
+    <script>
+        function salvarFornecedor() {
+            // .value pega o texto atual dentro da caixa de texto
+            let razao = document.getElementById('razao').value;
+            
+            // Validação simples: não permite salvar se o nome da empresa estiver vazio
+            if(razao === "") {
+                alert("Por favor, preencha a Razão Social.");
+            } else {
+                alert("Fornecedor " + razao + " cadastrado com sucesso!");
+                
+                // .reset() limpa o formulário inteiro (limpa Razão Social, CNPJ e Telefone)
+                document.getElementById('formFornecedor').reset();
+            }
+        }
+
+        function voltar() {
+            // window.location.href altera o endereço do navegador (troca de página)
+            window.location.href = 'PaginaPrincipal.html';
+        }
+    </script>
 </body>
 </html>
