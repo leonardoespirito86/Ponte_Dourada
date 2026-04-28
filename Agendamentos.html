@@ -3,49 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    
+    <!-- CONEXÃO COM O CSS: Define as cores, fontes e o layout da página -->
     <link rel="stylesheet" href="estilos/style.css">
+    
+    <!-- CONEXÃO COM O JS EXTERNO: Importa as funções globais (mascaras, nav, sair) -->
     <script src="scripts/script.js"></script>
+    
     <title>Agendamentos - GEC</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="principal">
         <h1 style="color: #FA2408;">Novo Agendamento</h1>
         
+        <!-- O ID 'formAgendamento' permite que limpemos todos os campos de uma vez no JavaScript -->
         <form id="formAgendamento">
+            
+            <!-- CAMPO CLIENTE: Input do tipo texto simples -->
             <div class="campo">
                 <label>Cliente:</label>
                 <input type="text" id="clienteNome" placeholder="Nome do cliente" required>
             </div>
 
+            <!-- CAMPO DATA: O 'type="date"' cria o calendário automático do navegador -->
             <div class="campo">
                 <label>Data do Atendimento:</label>
                 <input type="date" id="dataAgendamento" required>
             </div>
 
+            <!-- CAMPO RESPONSÁVEL: Identifica quem fará o serviço -->
             <div class="campo">
                 <label>Responsável pelo Atendimento:</label>
                 <input type="text" id="responsavel" placeholder="Nome do funcionário">
             </div>
 
+            <!-- CAMPO TEXTAREA: Diferente do input, ele permite múltiplas linhas de texto. 
+                 Ideal para descrições, observações ou prontuários médicos. -->
             <div class="campo">
                 <label>Observações/Motivo:</label>
                 <textarea id="motivo" style="width: 100%; border-radius: 8px; border: 1px solid #C7C9D9; padding: 10px;" rows="4"></textarea>
             </div>
 
+            <!-- BOTÕES DE AÇÃO:
+                 onclick="confirmar()" aciona a função de sucesso e limpeza.
+                 onclick="voltar()" redireciona para a página principal. -->
             <input type="button" value="CONFIRMAR AGENDAMENTO" onclick="confirmar()" class="btn-logar">
             <input type="button" value="VOLTAR AO MENU" onclick="voltar()" style="background-color: #687588; margin-top: 10px;" class="btn-logar">
         </form>
     </div>
 
+    <!-- SCRIPT LOCAL: Funções que controlam o comportamento exclusivo desta página -->
     <script>
+        // Função para simular a gravação dos dados e dar feedback ao usuário
         function confirmar() {
+            // alert: exibe uma caixa de mensagem simples na tela
             alert("Agendamento registrado com sucesso!");
+            
+            // .reset(): comando prático que limpa todos os inputs e textareas do form de uma vez
             document.getElementById('formAgendamento').reset();
         }
 
+        // Função de navegação para retornar ao menu principal
         function voltar() {
-            // Lembre-se: o nome aqui deve ser IGUAL ao seu arquivo da tela principal
+            // window.location.href: altera o endereço da URL, trocando de página
             window.location.href = "PaginaPrincipal.html";
         }
     </script>
