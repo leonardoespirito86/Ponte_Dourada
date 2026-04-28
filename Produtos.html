@@ -3,43 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <link rel="stylesheet" href="estilos/style.css">
-    <script src="scripts/script.js"></script>
+    
+    <!-- CONEXÃO COM ARQUIVOS EXTERNOS -->
+    <link rel="stylesheet" href="estilos/style.css"> <!-- Puxa o visual -->
+    <script src="scripts/script.js"></script> <!-- Puxa as máscaras e cálculos -->
+    
     <title>Cadastro de Produtos - GEC</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="principal">
         <h1 style="color: #FA2408;">Cadastro de Produtos</h1>
+        <p>Insira as informações técnicas e comerciais do produto.</p>
         
         <form id="formProduto">
+            <!-- CAMPO NOME -->
             <div class="campo">
                 <label>Nome do Produto:</label>
-                <input type="text" id="nomeProduto" placeholder="Ex: Cama Hospitalar, Cadeira de Rodas..." required>
+                <input type="text" id="nomeProduto" placeholder="Ex: Cama Hospitalar..." required>
             </div>
 
+            <!-- CAMPO PREÇO: 
+                 'oninput="mascaraMoeda(this)"' -> Sempre que digitar, limpa letras e põe "R$".
+                 Como a mascaraMoeda já chama o calcularTotal() lá no script.js, o cálculo é automático. -->
+            <div class="campo">
+                <label>Preço de Venda (R$):</label>
+                <input type="text" id="precoProduto" placeholder="R$ 0,00" oninput="mascaraMoeda(this)">
+            </div>
+
+            <!-- CAMPO QUANTIDADE:
+                 'type="number"' -> Abre o teclado numérico no celular e mostra setinhas.
+                 'oninput="calcularTotal()"' -> Chama a conta matemática a cada clique. -->
             <div class="campo">
                 <label>Quantidade em Estoque:</label>
-                <input type="number" id="qtdProduto" placeholder="0">
+                <input type="number" id="qtdProduto" value="0" oninput="calcularTotal()">
             </div>
 
+            <!-- EXIBIÇÃO DO RESULTADO:
+                 O 'id="valorTotal"' é o alvo onde o JavaScript escreverá o resultado final. -->
+            <div class="campo" style="margin-top: 15px; border-top: 1px solid #ddd; padding-top: 10px;">
+                <strong id="valorTotal" style="color: #FA2408; font-size: 1.2em;">Valor Total em Estoque: R$ 0,00</strong>
+            </div>
+
+            <!-- CAMPO TEXTAREA: Usado para textos longos (descrições) -->
             <div class="campo">
-                <label>Categoria:</label>
-                <input type="text" id="categoria" placeholder="Ex: Equipamentos, Medicamentos">
+                <label>Descrição do Produto:</label>
+                <textarea id="descricao" placeholder="Detalhes técnicos..." rows="3" style="width: 100%; border-radius: 4px;"></textarea>
             </div>
 
+            <br>
+            <!-- BOTÕES DE AÇÃO -->
             <input type="button" value="CADASTRAR PRODUTO" onclick="salvarProduto()" class="btn-logar">
             <input type="button" value="VOLTAR AO MENU" onclick="voltar()" style="background-color: #687588; margin-top: 10px;" class="btn-logar">
         </form>
     </div>
 
     <script>
+        /* FUNÇÕES LOCAIS: Estas funções ficam aqui porque são específicas desta página */
+
         function salvarProduto() {
-            alert("Produto cadastrado com sucesso!");
-            document.getElementById('formProduto').reset();
+            // Pegamos o nome para validar se não está vazio
+            let nome = document.getElementById('nomeProduto').value;
+            
+            if(nome === "") {
+                alert("Por favor, preencha o nome do produto.");
+            } else {
+                alert("Produto: " + nome + " cadastrado com sucesso!");
+                // .reset() limpa todos os campos do formulário de uma vez
+                document.getElementById('formProduto').reset();
+                // Como o reset não limpa o texto do <strong>, fazemos manualmente:
+                document.getElementById('valorTotal').innerText = "Valor Total em Estoque: R$ 0,00";
+            }
         }
 
         function voltar() {
+            // Redirecionamento simples
             window.location.href = "PaginaPrincipal.html";
         }
     </script>
