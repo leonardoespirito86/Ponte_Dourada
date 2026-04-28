@@ -3,37 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    
+    <!-- CONEXÃO EXTERNA: Link para o CSS e o JavaScript comum a todas as páginas -->
     <link rel="stylesheet" href="estilos/style.css">
     <script src="scripts/script.js"></script>
+    
     <title>Cadastro de Clientes - GEC</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="principal">
         <h1 style="color: #FA2408;">Cadastro de Clientes</h1>
-        <p>Preencha os dados abaixo para registrar um novo cliente.</p>
+        <p>Preencha os dados completos para registrar o novo cliente no sistema.</p>
 
         <form id="formCliente">
+            <!-- NOME: Input tipo texto simples -->
             <div class="campo">
                 <label>Nome Completo:</label>
                 <input type="text" id="nome" placeholder="Nome do cliente" required>
             </div>
 
+            <!-- CPF: Usa 'oninput' para acionar a máscara que remove letras e formata pontos/traço -->
             <div class="campo">
-                <label>E-mail de Contato:</label>
-                <input type="email" id="emailCliente" placeholder="exemplo@email.com" required>
+                <label>CPF:</label>
+                <input type="text" id="cpf" placeholder="000.000.000-00" oninput="mascaraCPF(this)" required>
             </div>
 
+            <!-- DATA NASCIMENTO: 'type="date"' cria o seletor de calendário automático do navegador -->
             <div class="campo">
                 <label>Data de Nascimento:</label>
                 <input type="date" id="dataNascimento" required>
             </div>
 
+            <!-- E-MAIL: 'type="email"' valida se existe um "@" e um domínio (ex: .com) -->
             <div class="campo">
-                <label>Telefone/WhatsApp:</label>
-                <input type="tel" id="telefone" placeholder="(00) 00000-0000">
+                <label>E-mail de Contato:</label>
+                <input type="email" id="emailCliente" placeholder="exemplo@email.com" required>
             </div>
 
+            <!-- TELEFONE: Aciona a máscara de telefone (00) 00000-0000 -->
+            <div class="campo">
+                <label>Telefone/WhatsApp:</label>
+                <input type="text" id="telefone" placeholder="(00) 00000-0000" oninput="mascaraTelefone(this)">
+            </div>
+
+            <!-- CEP: Aciona a máscara de CEP 00000-000 -->
+            <div class="campo">
+                <label>CEP:</label>
+                <input type="text" id="cep" placeholder="00000-000" oninput="mascaraCEP(this)">
+            </div>
+
+            <!-- ENDEREÇO -->
+            <div class="campo">
+                <label>Endereço Completo:</label>
+                <input type="text" id="endereco" placeholder="Rua, número, bairro...">
+            </div>
+
+            <br>
+            <!-- BOTÕES: 'salvar()' valida campos e 'voltar()' navega para o menu -->
             <input type="button" value="SALVAR CLIENTE" onclick="salvar()" class="btn-logar">
             
             <input type="button" value="VOLTAR AO MENU" onclick="voltar()" style="background-color: #687588; margin-top: 10px;" class="btn-logar">
@@ -41,19 +67,23 @@
     </div>
 
     <script>
+        // FUNÇÃO SALVAR: Local para processar os dados desta página específica
         function salvar() {
-            // Aqui pegamos o nome apenas para mostrar na mensagem
+            // Captura os valores dos inputs para verificação
             let nome = document.getElementById('nome').value;
-            if(nome === "") {
-                alert("Por favor, preencha o nome.");
+            let cpf = document.getElementById('cpf').value;
+
+            // VALIDAÇÃO SIMPLES: Verifica se campos obrigatórios estão vazios
+            if(nome === "" || cpf === "") {
+                alert("Por favor, preencha pelo menos o Nome e o CPF.");
             } else {
                 alert("Cliente " + nome + " cadastrado com sucesso!");
-                // Limpa o formulário após salvar
+                // Limpa todos os campos do formulário após o sucesso
                 document.getElementById('formCliente').reset();
             }
         }
 
-        // Esta função faz o navegador voltar para a tela anterior
+        // FUNÇÃO VOLTAR: Redireciona o usuário para a página principal
         function voltar() {
             window.location.href = "PaginaPrincipal.html";
         }
