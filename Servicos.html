@@ -3,43 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    
+    <!-- CONEXÃO COM O CSS: Define o visual (cores, espaçamentos e bordas) -->
     <link rel="stylesheet" href="estilos/style.css">
+    
+    <!-- CONEXÃO COM O JS EXTERNO: Importa a função mascaraMoeda e outras funções globais -->
     <script src="scripts/script.js"></script>
+    
     <title>Cadastro de Serviços - GEC</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="principal">
         <h1 style="color: #FA2408;">Cadastro de Serviços</h1>
+        <p>Registre os serviços oferecidos pela clínica ou empresa.</p>
         
+        <!-- O ID 'formServico' é a chave para resetar todos os campos de uma vez só -->
         <form id="formServico">
+            
+            <!-- NOME DO SERVIÇO: Campo obrigatório (required) -->
             <div class="campo">
                 <label>Nome do Serviço:</label>
-                <input type="text" id="nomeServico" placeholder="Ex: Fisioterapia, Curativo..." required>
+                <input type="text" id="nomeServico" placeholder="Ex: Manutenção de Cadeira, Consulta..." required>
             </div>
 
+            <!-- VALOR DO SERVIÇO: 
+                 O evento 'oninput' dispara a máscara de moeda do script.js a cada tecla digitada. 
+                 Isso garante que o usuário veja o "R$" e a vírgula em tempo real. -->
             <div class="campo">
-                <label>Valor Estimado (R$):</label>
-                <input type="number" id="valorServico" placeholder="0,00" step="0.01">
+                <label>Valor do Serviço (R$):</label>
+                <input type="text" id="precoServico" placeholder="R$ 0,00" oninput="mascaraMoeda(this)">
             </div>
 
+            <!-- TEMPO ESTIMADO: Campo de texto livre (pode ser "30 min" ou "2 horas") -->
             <div class="campo">
-                <label>Descrição do Serviço:</label>
-                <textarea id="descricao" style="width: 100%; border-radius: 8px; border: 1px solid #C7C9D9; padding: 10px;" rows="4"></textarea>
+                <label>Tempo Estimado:</label>
+                <input type="text" id="tempoServico" placeholder="Ex: 30 min, 2 horas">
             </div>
 
-            <input type="button" value="CADASTRAR SERVIÇO" onclick="salvarServico()" class="btn-logar">
+            <!-- DESCRIÇÃO: Uso do 'textarea' para observações mais detalhadas do serviço -->
+            <div class="campo">
+                <label>Descrição Breve:</label>
+                <textarea id="descServico" rows="2" style="width: 100%; border-radius: 5px; border: 1px solid #ccc;"></textarea>
+            </div>
+
+            <br>
+            <!-- BOTÕES DE AÇÃO:
+                 salvarServico(): Valida o nome e limpa a tela.
+                 voltar(): Retorna para a PaginaPrincipal.html -->
+            <input type="button" value="SALVAR SERVIÇO" onclick="salvarServico()" class="btn-logar">
             <input type="button" value="VOLTAR AO MENU" onclick="voltar()" style="background-color: #687588; margin-top: 10px;" class="btn-logar">
         </form>
     </div>
 
+    <!-- SCRIPT LOCAL: Lógica específica para esta página de cadastro -->
     <script>
         function salvarServico() {
-            alert("Serviço cadastrado com sucesso!");
-            document.getElementById('formServico').reset();
+            // Captura o valor digitado no input de nome
+            let nome = document.getElementById('nomeServico').value;
+            
+            // IF/ELSE para validar se o campo essencial foi preenchido
+            if(nome === "") {
+                alert("Por favor, preencha o nome do serviço.");
+            } else {
+                // Exibe mensagem de sucesso usando o nome do serviço digitado
+                alert("Serviço '" + nome + "' registrado com sucesso!");
+                
+                // .reset() limpa todos os campos (incluindo o textarea) automaticamente
+                document.getElementById('formServico').reset();
+            }
         }
 
         function voltar() {
+            // Comando para navegar de volta para o menu principal
             window.location.href = "PaginaPrincipal.html";
         }
     </script>
