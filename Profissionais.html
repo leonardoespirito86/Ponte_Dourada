@@ -3,26 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    
+    <!-- CSS: Controla a identidade visual (o vermelho #FA2408 e o layout) -->
     <link rel="stylesheet" href="estilos/style.css">
+    
+    <!-- JS EXTERNO: Onde estão as funções mascaraCPF e mascaraTelefone -->
     <script src="scripts/script.js"></script>
+    
     <title>Profissionais - GEC</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="principal">
         <h1 style="color: #FA2408;">Cadastro de Profissionais</h1>
+        <p>Preencha os dados do colaborador ou especialista.</p>
+
+        <!-- ID 'formProfissional': Essencial para o comando .reset() no final -->
         <form id="formProfissional">
+            
+            <!-- NOME: Uso do atributo 'required' (obrigatório) -->
             <div class="campo">
                 <label>Nome do Profissional:</label>
-                <input type="text" id="nomeProf" required>
+                <input type="text" id="nomeProf" placeholder="Nome completo" required>
             </div>
+
+            <!-- CPF: Reutiliza a função mascaraCPF. 
+                 O 'this' passa este input específico para o JavaScript formatar. -->
+            <div class="campo">
+                <label>CPF:</label>
+                <input type="text" id="cpfProf" placeholder="000.000.000-00" oninput="mascaraCPF(this)">
+            </div>
+
+            <!-- ESPECIALIDADE: Campo de texto simples -->
             <div class="campo">
                 <label>Especialidade:</label>
-                <input type="text" id="especialidade">
+                <input type="text" id="especialidade" placeholder="Ex: Fisioterapeuta, Cardiologista">
             </div>
-            <input type="button" value="SALVAR" onclick="alert('Profissional cadastrado!')" class="btn-logar">
-            <input type="button" value="VOLTAR" onclick="window.location.href='PaginaPrincipal.html'" style="background-color: #687588; margin-top: 10px;" class="btn-logar">
+
+            <!-- TELEFONE: Reutiliza a função mascaraTelefone -->
+            <div class="campo">
+                <label>Telefone / WhatsApp:</label>
+                <input type="text" id="telProf" placeholder="(00) 00000-0000" oninput="mascaraTelefone(this)">
+            </div>
+
+            <br>
+            <!-- BOTÕES: Chamam as funções de lógica e navegação -->
+            <input type="button" value="SALVAR PROFISSIONAL" onclick="salvarProfissional()" class="btn-logar">
+            <input type="button" value="VOLTAR AO MENU" onclick="voltar()" style="background-color: #687588; margin-top: 10px;" class="btn-logar">
         </form>
     </div>
+
+    <script>
+        // LÓGICA DE SALVAMENTO
+        function salvarProfissional() {
+            // Captura o valor para validação
+            let nome = document.getElementById('nomeProf').value;
+            
+            if(nome === "") {
+                alert("Por favor, preencha o nome do profissional.");
+            } else {
+                alert("Profissional " + nome + " cadastrado com sucesso!");
+                
+                // Limpa todos os campos para um novo cadastro
+                document.getElementById('formProfissional').reset();
+            }
+        }
+
+        // LÓGICA DE NAVEGAÇÃO
+        function voltar() {
+            window.location.href = 'PaginaPrincipal.html';
+        }
+    </script>
 </body>
 </html>
