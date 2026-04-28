@@ -1,34 +1,47 @@
+<!-- Comentários em HTML começam com estes sinais. Eles explicam o código. -->
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    
+    <!-- LINK PARA O CSS: Conecta as cores e o visual da pasta estilos -->
     <link rel="stylesheet" href="estilos/style.css">
+    
+    <!-- LINK PARA O JS: Conecta o "cérebro" do sistema (as funções) -->
     <script src="scripts/script.js"></script>
+    
     <title>Login - GEC Ponte Dourada</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="principal">
+        <!-- ÁREA DA LOGO: Centraliza a imagem no topo -->
         <div class="logo-area" style="text-align: center; margin-bottom: 30px;">
-    <img src="img/Logotipos/1.png" alt="Logo Ponte Dourada" style="max-width: 300px; height: auto;">
-</div>
+            <img src="img/Logotipos/1.png" alt="Logo Ponte Dourada" style="max-width: 300px; height: auto;">
+        </div>
 
         <form>
+            <!-- CAMPO E-MAIL: O 'id="email"' é o que o JavaScript usa para ler o texto -->
             <div class="campo">
                 <label>E-mail:</label>
                 <input type="email" id="email" placeholder="Digite seu e-mail" required>
             </div>
             
+            <!-- CAMPO SENHA: O 'type="password"' faz com que apareçam bolinhas ao digitar -->
             <div class="campo">
                 <label>Senha:</label>
                 <input type="password" id="senha" placeholder="Digite sua senha" required>
             </div>
 
+            <!-- BOTÃO LOGAR: 
+                 'onclick="logar()"' diz para o navegador rodar a função logar() 
+                 que está lá no arquivo script.js quando o botão for clicado. -->
             <input type="button" value="LOGAR" onclick="logar()" class="btn-logar">
         </form>
     </div>
 
-    <script src="script.js"></script>
+    <!-- IMPORTANTE: No seu código havia uma segunda chamada para script.js aqui embaixo.
+         O ideal é manter apenas a que está lá no <head> para evitar conflitos. -->
 </body>
 </html>
