@@ -6,31 +6,54 @@
     <link rel="stylesheet" href="estilos/style.css">
     <script src="scripts/script.js"></script>
     <title>Tela Principal - GEC</title>
-    <style>
-        
-    </style>
 </head>
+
+<!-- O 'onload="verificar()"' faz com que, ASSIM QUE A PÁGINA ABRIR, 
+     o JavaScript verifique se o usuário está logado e qual o seu setor. -->
 <body onload="verificar()">
 
     <div class="conteudo-central">
+        <!-- Este ID 'displaySetor' é preenchido pelo script com "GESTOR" ou "ATENDIMENTO" -->
         <div id="displaySetor" class="setor-texto">Nome do Setor Aqui: </div>
 
         <div class="logo-box">
             <img src="img/Logotipos/1.png" alt="Logo Ponte Dourada">
         </div>
 
+        <!-- A 'id="containerGrid"' organiza os botões. 
+             Note que cada botão tem um ID único (m1, m2, m3...). 
+             Isso permite que o JavaScript remova botões específicos para o Atendimento. -->
         <div class="grid-botoes" id="containerGrid">
-            <button class="menu-btn" id="m1" onclick="nav('Produtos.html')"><img src="img/Icones/produtos.png"><span>PRODUTOS</span></button>
-            <button class="menu-btn" id="m2" onclick="nav('Servicos.html')"><img src="img/Icones/servicos.png"><span>SERVIÇOS</span></button>
-            <button class="menu-btn" id="m3" onclick="nav('Agendamentos.html')"><img src="img/Icones/agendamentos.png"><span>AGENDAMENTOS</span></button>
-            <button class="menu-btn" id="m4" onclick="nav('Fornecedores.html')"><img src="img/Icones/fornecedores.png"><span>FORNECEDORES</span></button>
-            <button class="menu-btn" id="m5" onclick="nav('Profissionais.html')"><img src="img/Icones/profissionais.png"><span>PROFISSIONAIS</span></button>
-            <button class="menu-btn" id="m6" onclick="nav('CadastroClientes.html')"><img src="img/Icones/clientes.png"><span>CLIENTES</span></button>
+            
+            <!-- 'onclick="nav(...)"' chama a função de navegação do seu script.js -->
+            <button class="menu-btn" id="m1" onclick="nav('Produtos.html')">
+                <img src="img/Icones/produtos.png"><span>PRODUTOS</span>
+            </button>
+
+            <button class="menu-btn" id="m2" onclick="nav('Servicos.html')">
+                <img src="img/Icones/servicos.png"><span>SERVIÇOS</span>
+            </button>
+
+            <button class="menu-btn" id="m3" onclick="nav('Agendamentos.html')">
+                <img src="img/Icones/agendamentos.png"><span>AGENDAMENTOS</span>
+            </button>
+
+            <button class="menu-btn" id="m4" onclick="nav('Fornecedores.html')">
+                <img src="img/Icones/fornecedores.png"><span>FORNECEDORES</span>
+            </button>
+
+            <button class="menu-btn" id="m5" onclick="nav('Profissionais.html')">
+                <img src="img/Icones/profissionais.png"><span>PROFISSIONAIS</span>
+            </button>
+
+            <button class="menu-btn" id="m6" onclick="nav('CadastroClientes.html')">
+                <img src="img/Icones/clientes.png"><span>CLIENTES</span>
+            </button>
         </div>
 
+        <!-- Botão Sair: Chama 'sair()', que limpa a sessão e volta para o login -->
         <button class="btn-sair" onclick="sair()">Sair</button>
     </div>
-
 
 </body>
 </html>
