@@ -1,12 +1,21 @@
+/* ==========================================================================
+   ESTRUTURA BASE (BODY) 
+   ========================================================================== */
+
 body {
-    background-color: #F2F2F5; /* Cor Light 3 do guia */
-    font-family: 'Arial', sans-serif; /* Usando Arial como fallback da Uber Move */
+    /* Define o fundo, a fonte e centraliza o conteúdo na tela */
+    background-color: #F2F2F5; 
+    font-family: 'Arial', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
 }
+
+/* ==========================================================================
+   TELA DE LOGIN E FORMULÁRIOS (.principal)
+   ========================================================================== */
 
 .principal {
     background: white;
@@ -24,132 +33,132 @@ body {
 
 label {
     display: block;
-    color: #3A3A3C; /* Dark 1 */
+    color: #3A3A3C;
     margin-bottom: 5px;
 }
 
 input {
     width: 100%;
     padding: 12px;
-    border: 1px solid #C7C9D9; /* Dark 4 */
+    border: 1px solid #C7C9D9;
     border-radius: 8px;
-    box-sizing: border-box;
+    box-sizing: border-box; /* Impede que o padding aumente o tamanho da caixa */
 }
 
 .btn-logar {
-    background-color: #FA2408; /* Main Color */
+    background-color: #FA2408; /* Vermelho principal */
     color: white;
     font-weight: bold;
     border: none;
     cursor: pointer;
     margin-top: 10px;
+    padding: 10px; /* Adicionado para manter o padrão de clique */
+    width: 100%;
 }
 
 .btn-logar:hover {
-    background-color: #CB2B16; /* Darker */
+    background-color: #CB2B16; /* Tom mais escuro ao passar o mouse */
 }
 
+/* ==========================================================================
+   LAYOUT DA PÁGINA PRINCIPAL E MENU
+   ========================================================================== */
+
+/* Segunda definição de body (ajusta altura para telas com muito conteúdo) */
 body { 
-            font-family: Arial, sans-serif; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            min-height: 100vh; 
-            margin: 0; 
-            background-color: #f4f4f4; 
-        }
+    min-height: 100vh; 
+    background-color: #f4f4f4; 
+}
         
-        .conteudo-central { 
-            width: 700px; 
-            text-align: center; 
-        }
+.conteudo-central { 
+    width: 700px; 
+    text-align: center; 
+}
 
-        .setor-texto { 
-            color: red; 
-            font-weight: bold; 
-            margin-bottom: 20px; 
-            font-size: 18px;
-            text-align: center;
-        }
+.setor-texto { 
+    color: red; 
+    font-weight: bold; 
+    margin-bottom: 20px; 
+    font-size: 18px;
+    text-align: center;
+}
         
-        .logo-box { 
-            border: 2px solid #000; 
-            padding: 10px; 
-            margin: 0 auto 30px auto; 
-            width: 500px; 
-            background-color: white;
-            border-radius: 10px;
-        }
-        .logo-box img { 
-            width: 100%; 
-            display: block; 
-        }
+.logo-box { 
+    border: 2px solid #000; 
+    padding: 10px; 
+    margin: 0 auto 30px auto; 
+    width: 500px; 
+    background-color: white;
+    border-radius: 10px;
+}
 
-        /* Configuração do Grid */
-        .grid-botoes { 
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); 
-            gap: 20px;
-            justify-items: center;
-            width: 550px;
-            margin: 0 auto;
-        }
+.logo-box img { 
+    width: 100%; 
+    display: block; 
+}
 
-        .menu-btn { 
-            border: none; 
-            background: none; 
-            cursor: pointer; 
-            width: 120px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+/* CONFIGURAÇÃO DO GRID: Organiza os botões em 3 colunas */
+.grid-botoes { 
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px;
+    justify-items: center;
+    width: 550px;
+    margin: 0 auto;
+}
+
+.menu-btn { 
+    border: none; 
+    background: none; 
+    cursor: pointer; 
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
         
-       /* O quadrado do ícone */
+/* O QUADRADO DO ÍCONE */
 .menu-btn img {
     width: 60px; 
     height: 60px; 
     padding: 5px; 
     background-color: white;
-    transition: 0.3s;
+    transition: 0.3s; /* Suaviza a animação */
     border-radius: 15px;
     box-shadow: 2px 2px #c7c9d9;
-
-    /* AQUI ESTÁ O SEGREDO: */
-    border: 3px solid transparent; /* A borda existe, mas é invisível */
+    border: 3px solid transparent; /* Borda invisível para não "pular" no hover */
 }
 
-/* Estilo da imagem QUANDO O MOUSE ENCOSTA (Hover) */
+/* HOVER DA IMAGEM: A borda acende e o ícone cresce */
 .menu-btn:hover img {
-    /* A borda "acende" com a cor vermelha da paleta */
     border-color: #FA2408;
     transform: scale(1.1);
 }
 
-/* Estilo do texto (o nome em baixo do ícone) */
+/* Texto abaixo do ícone */
 .menu-btn span { 
     display: block; 
     font-size: 11px; 
     font-weight: bold; 
     margin-top: 8px; 
-    transition: 0.3s; /* Também muda suavemente */
+    transition: 0.3s;
 }
 
-/* Estilo do texto QUANDO O MOUSE ENCOSTA */
 .menu-btn:hover span { 
-    color: #FA2408; /* O texto também fica vermelho para combinar */
+    color: #FA2408;
 }
 
+/* BOTÃO SAIR: Estilo específico para o rodapé */
 .btn-sair {
-background-color: #FA2408; /* Main Color */
-width: 70px;
-height: 25px;
-border-radius: 10px;
-color: white;
-font-weight: bold;
-border: none;
-cursor: pointer;
-margin-top: 80px;
+    background-color: #FA2408;
+    width: 70px;
+    height: 25px;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    margin-top: 80px;
 }
 
 .btn-sair:hover {
